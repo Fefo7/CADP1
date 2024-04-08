@@ -15,30 +15,44 @@ Begin
   nombrePiloto1st := ' ';
   nombrePilotoUltimo := ' ';
 
-  For i:=0 To 4 Do
+  For i:=0 To 3 Do
     Begin
       WriteLn('ingrese el nombre del piloto');
       Read(nombrePiloto);
       WriteLn('ingrese el tiempo del piloto');
       read(Tiempo);
-      If tiempo>MaximoTiepo1 Then
+      {tiempo maximo}
+      If tiempo > MaximoTiepo1 Then
         Begin
-        {segundo puesto}
-          MaximoTiepo2 := MaximoTiepo1;
-          nombrePiloto2do := nombrePiloto1st;
-        {Primer puesto}
           MaximoTiepo1 := Tiempo;
           nombrePiloto1st := nombrePiloto;
-        End;
-      If Tiempo<MinimoTiempo1 Then
+
+          MaximoTiepo2 := MaximoTiepo1;
+          nombrePiloto2do := nombrePiloto1st;
+
+        End
+      Else If (tiempo > MaximoTiepo2)  Then
+             Begin
+
+               MaximoTiepo2 := Tiempo;
+               nombrePiloto2do := nombrePiloto;
+             End;
+
+      {tiempo minimo}
+      If Tiempo < MinimoTiempo1 Then
         Begin
-        {anteultimo puesto}
+
           MinimoTiempo2 := MinimoTiempo1;
           nombrePilotoAnteUltimo := nombrePilotoUltimo;
-        {ultimo puesto}
+
           MinimoTiempo1 := Tiempo;
           nombrePilotoUltimo := nombrePiloto;
-        End;
+        End
+      Else If (Tiempo < MinimoTiempo2) Then
+             Begin
+               MinimoTiempo2 := Tiempo;
+               nombrePilotoAnteUltimo := nombrePiloto;
+             End;
     End;
   WriteLn('ganador de la carrera: ', nombrePiloto1st, 'segundo puesto: ',
           nombrePiloto2do);
