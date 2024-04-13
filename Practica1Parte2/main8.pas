@@ -36,6 +36,4 @@ Begin
   WriteLn('Monto total del mes ',' =', TotalVentasD);
   WriteLn('El dia  maximo de ventas es: ', DiaMayorVenta, 'se hicieron',
           CantVentasMaxima);
-
-
 End.
