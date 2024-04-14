@@ -1,7 +1,6 @@
 
 Program main5;
 
-
 {a. Realizar un módulo que reciba un par de números (numA,numB) y retorne si numB
 es el doble de numA.}
 Procedure DoblenumA(numA,numB:Integer; Var IsOlder:Boolean );
@@ -34,6 +33,6 @@ Begin
       ReadLn(numB);
 
     End;
-  WriteLn('number Of pairs entered', amountPeers,
-          'Number Of pairs in which B is double A', amountDoubleB);
+  WriteLn('number Of pairs entered', amountPeers,' ',
+          'Number Of pairs in which B is double A',' ', amountDoubleB);
 End.
