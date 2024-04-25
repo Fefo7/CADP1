@@ -40,7 +40,6 @@ Var
   maxCarInput: Car;
 Begin
   maxCarInput.price := -1;
-
   readCar(carInput);
   While carInput.brand <> 'zzz'  Do
     Begin
