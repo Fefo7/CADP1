@@ -2,7 +2,7 @@
 Program main9;
 
 Const 
-  tam = 400;
+  tam = 3;
   AluG = 2;
 
 Type 
@@ -15,11 +15,11 @@ Type
   End;
   alumnos = array[1..tam] Of alumno;
   AlumnosMasGrandes = array[1..AluG] Of alumno;
-Procedure LeerAlumno(Var a:alumno; Var condicion:Boolean);
+Procedure LeerAlumno(Var a:alumno);
 Begin
   WriteLn('numero de DNI: ');
   ReadLn(a.dni);
-  If a.dni <> -1  Then
+  If a.dni <> -1 Then
     Begin
       WriteLn('numero de inscripcion: ');
       ReadLn(a.nroInscripcion);
@@ -29,20 +29,18 @@ Begin
       ReadLn(a.nombre);
       WriteLn('Año de nacimeinto: ');
       ReadLn(a.year);
-      condicion := True;
-    End
-  Else
-    condicion := False;
+    End;
+
 End;
-Procedure CargaDatosALumnos(Var Valumnos: alumnos;  condicion:Boolean);
+Procedure CargaDatosALumnos(Var Valumnos: alumnos);
 
 Var 
   i: Integer;
 Begin
   i := 1;
-  While (condicion <> False) And (i<=tam) Do
+  While (Valumnos[i].dni <>-1) And (i< tam) Do
     Begin
-      LeerAlumno(Valumnos[i], condicion);
+      LeerAlumno(Valumnos[i]);
       i := i+1;
     End;
 
@@ -52,20 +50,16 @@ Function esDniPar(dni: Integer ): Boolean;
 
 Var 
   aux: integer;
-  condicion: Boolean;
+  digito: Integer;
 Begin
-  While (dni<>0) And (condicion = False) Do
+  esDniPar := True;
+  While (dni<>0) And esDniPar Do
     Begin
       aux := dni Mod 10;
-      If ((aux Mod 2)= 0) Then
-        Begin
-          dni := dni Div 10;
-          condicion := True;
-        End
-      Else
-        condicion := False ;
+      If ((aux Mod 2)<> 0) Then
+        esDniPar := False ;
+      dni := dni Div 10;
     End;
-  esDniPar := condicion;
 End;
 
 
@@ -74,14 +68,13 @@ Var
   a: alumnos;
   CantDniPar: Integer;
   aG: AlumnosMasGrandes;
-  condicion: Boolean;
 Begin
   CantDniPar := 0;
   aG[1].year := 9999;
-  CargaDatosALumnos(a,condicion);
+  CargaDatosALumnos(a);
   For i:=1 To tam Do
     Begin
-      If esDniPar(a[i].dni) Then
+      If (esDniPar(a[i].dni)) Then
         CantDniPar := CantDniPar +1;
       If a[i].year < aG[1].year Then
         Begin
