@@ -42,6 +42,8 @@ Function ListaOrdenada(list:lista): Boolean;
 
 
 
+
+
 //supuse que era menor a mayor, entonces siempre el siguiente tiene que ser mayor, si no es mayor el siguiente quiere decir que no esta ordenada
 
 Var 
@@ -76,15 +78,14 @@ Begin
       ant := act;
       act := act^.sig;
     End;
-  If act^.sig = Nil Then
+  If act^.num = numABorrar Then
     Begin
-      ant^.sig := Nil;
+      ant^.sig := act^.sig;
       Dispose(act);
     End
   Else
     Begin
-      ant^.sig := act^.sig;
-      Dispose(act);
+      WriteLn('no se encotro el numero a borrar');
     End;
 End;
 Begin
