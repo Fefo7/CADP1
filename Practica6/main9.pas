@@ -43,6 +43,17 @@ Function ListaOrdenada(list:lista): Boolean;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 //supuse que era menor a mayor, entonces siempre el siguiente tiene que ser mayor, si no es mayor el siguiente quiere decir que no esta ordenada
 
 Var 
@@ -71,15 +82,19 @@ Var
   act,ant: lista;
 Begin
   act := list;
-  ant := list;
   While (act<> Nil) And (numABorrar <> act^.num) Do
     Begin
       ant := act;
       act := act^.sig;
     End;
-  If act^.num = numABorrar Then
+  If act <> Nil Then
     Begin
-      ant^.sig := act^.sig;
+      If act = list Then
+        Begin
+          list := list^.sig;
+        End
+      Else
+        ant^.sig := act^.sig;
       Dispose(act);
     End
   Else
@@ -87,6 +102,36 @@ Begin
       WriteLn('no esta tu numero a borrar');
     End;
 End;
+Procedure eliminarElementoListaMasDeDosVeces(Var list: lista; numABorrar:Integer
+);
+
+Var 
+  act,ant: lista;
+Begin
+  act := list;
+  While (act<> Nil)   Do
+    Begin
+      If (numABorrar <> act^.num) Then
+        Begin
+          ant := act;
+          act := act^.sig;
+        End
+      Else
+        Begin
+          If act = list Then
+            Begin
+              list := list^.sig;
+            End
+          Else
+            ant^.sig := act^.sig;
+          Dispose(act);
+          act := ant;
+        End
+
+    End;
+
+End;
+
 Begin
 
 End.
