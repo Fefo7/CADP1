@@ -43,7 +43,6 @@ Function ListaOrdenada(list:lista): Boolean;
 
 
 
-
 //supuse que era menor a mayor, entonces siempre el siguiente tiene que ser mayor, si no es mayor el siguiente quiere decir que no esta ordenada
 
 Var 
@@ -85,7 +84,7 @@ Begin
     End
   Else
     Begin
-      WriteLn('no se encotro el numero a borrar');
+      WriteLn('no esta tu numero a borrar');
     End;
 End;
 Begin
