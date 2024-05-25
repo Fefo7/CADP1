@@ -61,7 +61,7 @@ Var
   cantPares: Integer;
 Begin
   cantPares := 0;
-  While (codigo <> 0) And (cantPares < 3) Do
+  While (codigo <> 0) And (cantPares <= 3) Do
     Begin
       digito := codigo Mod 10;
       If (digito Mod 2 = 0) Then
