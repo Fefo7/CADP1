@@ -7,6 +7,10 @@ Type
     num : integer;
     sig : lista;
   End;
+Procedure crearLista(Var list: lista);
+Begin
+  list := Nil;
+End;
 Procedure armarNodo(Var L: lista; num: integer);
 
 Var 
@@ -31,13 +35,6 @@ End;
 
 Function ListaOrdenada(list:lista): Boolean;
 //preguntar al profe si esta bien pensado que la lista sea de menor a mayor?
-
-
-
-
-
-
-
 
 
 
@@ -130,6 +127,80 @@ Begin
 
     End;
 
+End;
+Procedure IntervaloLista(list: lista;Var SubList: lista;numA:integer; numB:
+                         Integer);
+
+Var 
+  aux: lista;
+Begin
+  crearLista(SubList);
+  While list <> Nil Do
+    Begin
+      If (list^.num > numA) And (list^.num < numB) Then
+        Begin
+          new(aux);
+          aux^.num := list^.num;
+          aux^.sig := Nil;
+          If SubList= Nil Then SubList := aux
+          Else
+            Begin
+              aux^.sig := SubList;
+              SubList := aux;
+            End;
+        End;
+      list := list^.sig;
+    End;
+End;
+
+Procedure IntervaloListaAscendente(list: lista;Var SubList: lista;numA:integer;
+                                   numB:
+                                   Integer);
+
+Var 
+  aux: lista;
+  condicion: Boolean;
+Begin
+  crearLista(SubList);
+  condicion := (list^.num > numA) And (list^.num < numB);
+  While (list <> Nil) And (condicion) Do
+    Begin
+      new(aux);
+      aux^.num := list^.num;
+      aux^.sig := Nil;
+      If SubList= Nil Then SubList := aux
+      Else
+        Begin
+          aux^.sig := SubList;
+          SubList := aux;
+        End;
+      list := list^.sig;
+    End;
+End;
+
+Procedure IntervaloListaDescendente(list: lista;Var SubList: lista;numA:integer;
+                                    numB:
+                                    Integer);
+
+Var 
+  aux: lista;
+  condicion: Boolean;
+Begin
+  crearLista(SubList);
+  condicion := (list^.num < numB) And (list^.num > numA);
+  While (list <> Nil) And (condicion) Do
+    Begin
+      new(aux);
+      aux^.num := list^.num;
+      aux^.sig := Nil;
+      If SubList= Nil Then SubList := aux
+      Else
+        Begin
+          aux^.sig := SubList;
+          SubList := aux;
+        End;
+      list := list^.sig;
+    End;
 End;
 
 Begin
