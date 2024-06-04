@@ -18,7 +18,7 @@ Type
   End;
   CantCode = array[CodGen] Of Integer;
 
-Procedure CargarPersona(Var p:persona;);
+Procedure CargarPersona(Var p:persona);
 Begin
   ReadLn(p.dni);
   ReadLn(p.apellido);
@@ -48,6 +48,8 @@ Var
   Ispar: Integer;
   IsImpar: Integer;
 Begin
+  Ispar := 0;
+  IsImpar := 0;
   While dni <> 0 Do
     Begin
       dig := dni Mod 10;
@@ -123,7 +125,8 @@ Begin
   Repeat
     CargarPersona(p);
     CrearNodo(listaPerso, p);
-    If MasParesQueImpares Then CantPersonasDniPar := CantPersonasDniPar+1;
+    If MasParesQueImpares(p.dni) Then CantPersonasDniPar := CantPersonasDniPar+1
+    ;
     ContarCodigosGenero(codesGen,p.CodigoGenero);
   Until p.dni =33555444
 End;
@@ -134,5 +137,5 @@ Var
   codesGen: CantCode;
 
 Begin
-  listPersona := Nil;
+  listaPerso := Nil;
 End.
