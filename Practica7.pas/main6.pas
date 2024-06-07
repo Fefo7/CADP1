@@ -60,14 +60,12 @@ Begin
   If Pi= Nil Then
     Begin
       pi := aux;
-      ult := aux;
     End
   Else
     Begin
       Pi^.sig := aux;
-      ult := aux;
-
     End;
+  ult := aux;
 
 End;
 Procedure CargarLista(Var listaObjetos,ult:listObject);
