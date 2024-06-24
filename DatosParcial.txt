@@ -1,0 +1,11 @@
+Puntos a tener en cuenta parcial de CADP:
+
+-Primero define todos los tipos de datos que va a utilizar
+-Luego pone todos los procesos que va hacer en el program principal y la variables locales para no olvidarse y que queden prolijo
+
+* Se pueden crear los metodos en cualquier lugar de la hoja en el parcial.
+
+Generalmente 3 zonas:
+- carga de los datos(vectores,lista)
+- procesamineto de datos
+- Imprimir los datos
