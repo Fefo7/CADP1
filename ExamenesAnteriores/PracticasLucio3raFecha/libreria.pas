@@ -29,6 +29,10 @@ Procedure crearLista (Var l: listLibro);
 Begin
   l := Nil;
 End;
+Procedure cargarListaDipone(l:listLibro);
+Begin
+  // se dispone
+End;
 Procedure inicializarVector(Var v: contadorGenero);
 
 Var 
@@ -189,6 +193,7 @@ Begin
   crearLista(libros);
   crearLista(librosOrde);
   inicializarVector(contGenero);
+  cargarListaDipone(libros);
 
   procesarDatos(libros, contGenero,titulo,titulo2);
   informar(contGenero, titulo, titulo2);
