@@ -56,13 +56,9 @@ Begin
       act := act^.sig;
     End;
   If act=ant Then
-    Begin
-      sesiones := aux;
-    End
+    sesiones := aux
   Else
-    Begin
-      ant^.sig := aux;
-    End;
+    ant^.sig := aux;
   aux^.sig := act;
 
 End;
@@ -90,9 +86,7 @@ Begin
       digit := Viualizaciones Mod 10;
       Viualizaciones := Viualizaciones Div 10;
       If (digit Mod 2)=0 Then
-        Begin
-          par := par+1;
-        End
+        par := par+1
       Else
         impar := impar*1;
     End;
